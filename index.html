@@ -189,7 +189,16 @@
 <div class="center">
   <button id="btnDownloadPDF">📄 Télécharger PDF</button>
 </div>
-
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const bloc = params.get('bloc'); // ?bloc=attribution ou suivi ou decharge
+  const admin = params.get('admin'); // ?admin=1
+  if (bloc) {
+    const id = bloc==='attribution'?'blocAttribution':bloc==='suivi'?'blocSuivi':'blocDecharge';
+    document.getElementById(id).style.display='block';
+  }
+</script>
 <script>
 // ---- Admin ----
 function toggleAdminPanel() {
